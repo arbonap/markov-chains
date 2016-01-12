@@ -32,11 +32,22 @@ def make_chains(text_string):
         {('hi', 'there'): ['mary', 'juanita'], ('there', 'mary'): ['hi'], ('mary', 'hi': ['there']}
     """
 
-    chains = {}
+    chains = {}  #tuple as key, list as value
 
-    # your code goes here
+    #split file into list of words 
+    #.split() returns a list of strings
+    words = text_string.split()
 
-    return chains
+    #loop over these words by i,
+    for i in range(len(words) - 2): #we stopped before last group of words
+        if (words[i], words[i + 1]) in chains: #check if key already exists, if yes, append value list
+            chains[(words[i], words[i + 1])].append(words[i + 2])
+        else:
+            chains[(words[i], words[i + 1])] = [words[i + 2]] #if key not already exists, create empty list as value
+            # chains[(words[i], words[i + 1])].append(words[i + 2])
+
+
+    # print chains
 
 
 def make_text(chains):
@@ -44,7 +55,7 @@ def make_text(chains):
 
     text = ""
 
-    # your code goes here
+    #your code goes here
 
     return text
 
@@ -58,6 +69,6 @@ input_text = open_and_read_file(input_path)
 chains = make_chains(input_text)
 
 # Produce random text
-random_text = make_text(chains)
+# random_text = make_text(chains)
 
-print random_text
+print chains
