@@ -47,7 +47,7 @@ def make_chains(text_string):
             # chains[(words[i], words[i + 1])].append(words[i + 2])
 
 
-    # print chains
+    print chains
 
 
 def make_text(chains):
@@ -69,6 +69,6 @@ input_text = open_and_read_file(input_path)
 chains = make_chains(input_text)
 
 # Produce random text
-# random_text = make_text(chains)
+random_text = make_text(chains)
 
 print chains
