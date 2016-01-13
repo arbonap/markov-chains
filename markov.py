@@ -47,15 +47,28 @@ def make_chains(text_string):
             # chains[(words[i], words[i + 1])].append(words[i + 2])
 
 
-    print chains
+    return chains
 
 
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
     text = ""
+    # print "CHAINS: ", chains
+    #get the first link
+    first_key = choice(chains.keys())
+    first_word = first_key[0]
+    second_word = first_key[1]
+    #take random word from the list
+    third_word = choice(chains[first_key])
+    text = text + first_word + " " + second_word + " " + third_word
+    # print text
 
-    #your code goes here
+    #get the new link
+    next_word = choice(chains[(second_word, third_word)])
+
+    #take random word from the list
+    #which equals to our new key's first word
 
     return text
 
@@ -71,4 +84,4 @@ chains = make_chains(input_text)
 # Produce random text
 random_text = make_text(chains)
 
-print chains
+# print chains
