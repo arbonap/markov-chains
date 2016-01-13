@@ -57,16 +57,29 @@ def make_text(chains):
     # print "CHAINS: ", chains
     #get the first link
     first_key = choice(chains.keys())
-    first_word = first_key[0]
-    second_word = first_key[1]
-    #take random word from the list
-    third_word = choice(chains[first_key])
-    text = text + first_word + " " + second_word + " " + third_word
+   
     # print text
+    while first_key in chains:
+        print "first key:" , first_key
+        first_word = first_key[0]
+        print "first_word: ", first_word
+        second_word = first_key[1]
+        print "second word: ", second_word
+    #take random word from the list
+        third_word = choice(chains[first_key])
+        print "third word: ", third_word
+        text = text + first_word + " " + second_word + " " + third_word + " "
+        print "text: ", text
+        first_key = (second_word, third_word)
+        print "new first_key: ", first_key
+        print "*" * 25
+
 
     #get the new link
-    next_word = choice(chains[(second_word, third_word)])
+    # next_word = choice(chains[(second_word, third_word)])
 
+
+    # text = text + " " + next_word
     #take random word from the list
     #which equals to our new key's first word
 
